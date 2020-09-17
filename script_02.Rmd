@@ -1,6 +1,6 @@
 ---
 title: "Week 2"
-author: "David Kane"
+author: "Trisha Prabhu"
 output: html_document
 ---
 
@@ -21,9 +21,16 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Once you have finished cleaning your data, figure out the course with the highest enrollment. And figure out how many students are enrolled in Gov 50. If you get a number much lower than 151, you have done something wrong . . .
 
+```{r q1}
 
+raw <- read_excel("raw_data/class_enrollment_summary_by_term_9-17-2020.xlsx", skip = 3)
+View(raw)
 
+raw %>%
+  select("Course ID", "Course Title", "Course Name", "Course Department", "Instructor Full Name", "UGrad") %>%
+  filter("UGrad" >= 10)
 
+```
 ### Scene 2
 
 **Prompt:** Create a bar plot of the 10 biggest courses. Order the plot so that courses appear in descending order. You will want to use coord_flip() to make your plot easy to read.
